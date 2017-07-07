@@ -11,10 +11,11 @@ imageIter = 0
 
 #construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
-ap.add_argument("-n", "--prefix-name", required=True,
-	help="prefix of the current batch")
+ap.add_argument("name")
 
 args = vars(ap.parse_args())
+
+# print(args["shape-predictor"])
 
 # initialize dlib's face detector (HOG-based) and then create
 # the facial landmark predictor and the face aligner
@@ -45,7 +46,7 @@ while (True):
 
 		# display the output images
 		# cv2.imshow("Original", faceOrig)
-		cv2.imwrite("inputData/" + args["prefix-name"] + str(iter) + ".jpg", faceAligned)
+		cv2.imwrite("inputData/" + args["name"] + str(iter) + ".jpg", faceAligned)
 		cv2.imshow("Aligned", faceAligned)
 		iter += 1
 
